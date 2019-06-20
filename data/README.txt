@@ -31,6 +31,8 @@ The functions of the different border methods: compactness, convexity and abrupt
 borderirregularity.py
 Lastly a csv file is created of the values for each image.
 
+In borderirregularity.py the function binarize.py and centroid.py are called to make a binary image and to find the center of the lesion.
+
 ###To visualize the data a rain plot cloud is made with the function: raincloudplot.py
 In this function, one has to choose whether one wants the visualization of the data of the
 given or created masks. 

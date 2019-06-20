@@ -72,7 +72,7 @@ def abruptness(image):
     im6=255-im6
 
     
-    ##Get the centroid and distances to edgesx
+    ##Get the centroid and distances to edges
     _max_rad_pt, _max_rad, outline_img, centroid_to_edges, centroid = get_centroid(curr_img=im6)
     ##Get the average distance
     mean_dist = np.mean(centroid_to_edges)

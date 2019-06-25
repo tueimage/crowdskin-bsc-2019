@@ -11,6 +11,7 @@ def asymmetry2(maskedImage):
     from skimage.measure import label, regionprops
     import cv2
     import imutils
+    import matplotlib.pyplot as plt
     
     #read in mask 
     mask = cv2.imread(maskedImage)
@@ -26,6 +27,8 @@ def asymmetry2(maskedImage):
         y0,x0 = props.centroid
         angle = -props.orientation
     
+    angle = angle*(180/3.14159)
+    
     #determine the center of the total image 
     total_row,total_col= labeledImage.shape 
     cen_x,cen_y=total_col/2, total_row/2
@@ -40,13 +43,14 @@ def asymmetry2(maskedImage):
     
     #rotate the image 
     rotatedImage= imutils.rotate(binaryImage,angle)
-    
+ 
     #rotate around its main axis and measure the asymmetry in both x and y  
     
     symY= []
     symX= []
     for i in np.arange(0,185,5):
         rotated = imutils.rotate_bound(rotatedImage,i)
+        #plt.imshow(rotated)
         labeledImage2= label(rotated)
         regions2 = regionprops(labeledImage2)
         for props in regions2:
